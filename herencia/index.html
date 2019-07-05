@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classes</title>
+</head>
+
+<body>
+    <script>
+
+        class Person {
+
+            constructor(name, age, celiac) {
+                this._name = name
+                this._age = age
+                this._celiac = celiac
+            }
+
+            shout(vol = 'normal') {
+                console.log('La persona', this._name, 'ha gritado a un volúmen', vol)
+            }
+
+            grow(years) {
+                this._age += years
+            }
+        }
+
+
+
+        class Child extends Person {        // extends es la palabra clave que extiende una clase padre con otras clases hijas
+
+            constructor(name, age, celiac, toys) {
+                super(name, age, celiac)                // El método super() está contectado con el cosntructor de la clase padre
+                this._toys = toys
+            }
+
+            newToy(toy) {
+                this._toys.push(toy)
+            }
+        }
+
+        class Worker extends Person {
+
+            constructor(name, age, celiac, salary) {
+                super(name, age, celiac)
+                this._salary = salary
+            }
+
+            earnMore(quantity) {
+                this._salary += quantity
+            }
+        }
+
+
+
+        const raul = new Child('Raulito', 2, false, ['Playmobil', 'K-nex'])
+        console.log('El niño', raul._name, 'tiene estos juguetes:', raul._toys)
+        raul.newToy('Lego')
+        console.log('El niño', raul._name, 'tiene estos juguetes:', raul._toys)
+
+        const paco = new Worker('Paco', 32, true, 50000)
+        console.log('El trabajador', paco._name, 'gana', paco._salary)
+        paco.earnMore(10000)
+        console.log('El trabajador', paco._name, 'gana', paco._salary)
+
+
+
+
+    </script>
+</body>
+
+</html>

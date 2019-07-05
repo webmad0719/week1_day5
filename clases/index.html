@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classes</title>
+</head>
+
+<body>
+    <script>
+
+        class Person {      // Método constructor, único y opcional, conectado con la palabra clave new
+
+            constructor(name, age, hobbies, celiac) {
+                this._name = name
+                this._age = age
+                this._hobbies = hobbies
+                this._celiac = celiac
+                this._alive = true      // Puedo tener propiedades internas con valores por defecto
+            }
+
+            shout(vol = 'normal') {     // Métodos protoype, ilimitados, declarados dentro de la clase y utilizados por las instancias
+                console.log('La persona', this._name, 'ha gritado a un volúmen', vol)
+            }
+
+            grow(years) {
+                this._age += years
+            }
+        }
+
+        // Instancias de Person
+        const person1 = new Person('Ger', 33, ['Techno', 'Popino'], false)
+        const person2 = new Person('María', 28, ['Gadgets', 'JS'], true)
+
+        console.log('La persona', person1._name, 'tiene', person1._age, 'años... ¿y está vivo?', person1._alive)
+
+        person1.shout('altísimo, ¡oh no!')
+        person1.grow(10)
+
+        console.log('La persona ahora tiene', person1._age, 'años')
+
+
+    </script>
+</body>
+
+</html>

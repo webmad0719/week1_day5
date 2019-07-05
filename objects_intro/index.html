@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objects Intro</title>
+</head>
+
+<body>
+
+    <script>
+        // propiedades: a keys cuyo valor es diferente a una función
+        // métodos: keys cuyo valor es una función
+
+        const person = {
+            name: 'Ger',
+            age: 33,
+            hobbies: ['Roller Coasters', 'Techno', 'Popino'],
+            shout: function (volumen = 'normal') {
+                alert(`La persona ${this.name} ha gritado a un volúmen ${volumen}`)     // La palabra this hace referencia al objeto dentro del que se encuentra
+            },
+            grow: function () {
+                this.age++
+            },
+            susbcriptions: {
+                paid: [
+                    {
+                        name: 'Netflix',
+                        cost: 10.99
+                    },
+                    {
+                        name: 'Adobe',
+                        cost: 9.99
+                    }
+                ],
+                free: [
+                    {
+                        name: 'Code Academy'
+                    },
+                    {
+                        name: 'Atresmedia'
+                    }
+                ]
+            }
+        }
+
+        // Iteración sobre array
+        const paidSubs = person.susbcriptions.paid
+
+        // Iteración mediante .forEach() con function statement
+        /*
+        paidSubs.forEach(function (elm) {
+            console.log(`La suscripción a ${elm.name} cuesta ${elm.cost}`)
+        })
+        */
+
+        // Iteración mediante .forEach() con arrow function, igual que la anterior
+        paidSubs.forEach(elm => console.log(`La suscripción a ${elm.name} cuesta ${elm.cost}`))
+
+
+
+
+        // Acceso a proppiedades anidadas
+        const nfCost = person.susbcriptions.paid.cost;
+        console.log('El coste de Netflix es', nfCost)
+
+
+
+
+        const theName = person.name             // uso getter de propiedad
+
+        console.log('El nombre es', theName)
+        console.log('La edad es', person['age'])
+
+        person.name = 'Carlos'                  // uso setter de propiedad
+
+        person.height = 189
+        //person['height'] = 189
+
+        console.log('La altura es', person.height)
+
+
+
+
+        // Opetador 'in' para comprobar existencia de propiedad en objeto
+        const prop1 = 'age' in person
+        console.log('¿Existe la propiedad "age"?', prop1)
+
+        // Opetador 'delete' para eliminar propiedad en objeto
+        delete person.susbcriptions.free
+
+        // Método .keys() para iterar sobre propiedades de objeto
+        console.log('Las propiedades de persona son:', Object.keys(person))
+
+        // Bucle for in para iterar sobre propiedades de objeto
+        for (let key in person) {
+            console.log('El valor de', key, 'es', person[key])
+        }
+
+        person.shout('muy alto')
+        person.shout('bajito')
+        person.shout()
+
+        console.log('La persona tiene', person.age, 'años')
+        person.grow()
+        console.log('La persona tiene', person.age, 'años')
+
+    </script>
+</body>
+
+</html>

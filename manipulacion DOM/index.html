@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+</head>
+
+<body>
+
+    <h1>Manipulación del DOM</h1>
+    <div id="cat">Soy un gato negro</div>
+
+    <div id="cat2">Soy el segundo gato negro</div>
+
+    <div class="mouse">Soy un ratón negro</div>
+    <div class="mouse">Soy un ratón negro</div>
+    <div class="mouse">Soy un ratón negro</div>
+
+    <div class="elephant">Soy un elefantenegro</div>
+    <div class="elephant">Soy un elefante negro</div>
+    <div class="elephant">Soy un elefante negro</div>
+
+    <div class="especial1">A mí me ponen la clase "Verde"...</div>
+
+
+    <script>
+
+        // .querySelector() retorna el primer objeto de tipo DOM con el que haga match el selector
+        const theCat = document.querySelector('#cat')
+        console.log("Aquí el gato:", theCat)
+
+        theCat.innerHTML = "Soy un gato que vengo desde el Script"
+        theCat.style.color = "green"
+
+
+
+        // .querySelectorAll() retorna una colección (A R R A Y) de objetos de tipo DOM con los elementos que hagan match con el selector
+        const theMice = document.querySelectorAll('.mouse')
+        console.log("Aquí los ratones:", theMice)
+
+        theMice.forEach(mouse => mouse.style.color = 'red')
+
+
+        // .getElementById() retorna el objeto de tipo DOM que tenga el ID que coincida con el argumento
+        const theSecondCat = document.getElementById('cat2')
+        theSecondCat.style.fontWeight = 900
+
+        // Observa un objeto de tipo DOM por consola:
+        console.log({ theSecondCat })
+
+
+        // .getElementsByClassName() retorna un HTMLCollection (ojo! no tiene .forEach()) de objetos de tipo DOM con los elementos que hagan match con la clase
+        const elephants = document.getElementsByClassName('elephant')
+        for (let i = 0; i < elephants.length; i++) {
+            elephants[i].style.color = 'green'
+            elephants[i].innerHTML = 'Soy un elefante cambiado desde el script'
+        }
+
+
+
+        // .getElementsByTagName() retorna un HTMLCollection (ojo! no tiene .forEach()) de objetos de tipo DOM con los elementos que hagan match con la etiqueta
+        const allDivs = document.getElementsByTagName('div')
+        for (let i = 0; i < allDivs.length; i++) {
+            allDivs[i].style.letterSpacing = '2px'
+        }
+
+
+        // Sustituye el atributo class por el valor pasado a la propiedad
+        //document.getElementsByClassName('especial1')[0].className = 'verde'
+
+        // Acumula a su atributo class el valor pasado a la propiedad
+        document.getElementsByClassName('especial1')[0].className += ' verde'
+
+
+    </script>
+</body>
+
+</html>
